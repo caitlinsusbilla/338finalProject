@@ -1,5 +1,7 @@
 package com.example.a338rebuiltfinalproject;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,24 +11,20 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class viewClass extends AppCompatActivity {
-
+public class viewAssignments extends AppCompatActivity {
     Button backButton;
 
-    private List<SchoolClass> classList = new ArrayList<>();;
+    private List<Assignments> assList = new ArrayList<>();;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_class);
+        setContentView(R.layout.activity_view_assignments);
 
-        ListView listView = findViewById(R.id.listClass);
-        backButton = findViewById(R.id.backButton);
+        ListView listView = findViewById(R.id.listAssignments);
+        backButton = findViewById(R.id.assignBackButton);
 
         String username = getIntent().getStringExtra("USERNAME");
         boolean isAdmin = getIntent().getBooleanExtra("isAdmin", true);
@@ -38,8 +36,8 @@ public class viewClass extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                classList = AppDatabase.getDatabase(viewClass.this).schoolclassDao().getAllClassesForUser(userId);
-                ArrayAdapter adapter = new ArrayAdapter<>(viewClass.this,android.R.layout.simple_list_item_1, classList);
+                assList = AppDatabase.getDatabase(viewAssignments.this).assignmentsDao().getAllAssForUser(userId);
+                ArrayAdapter adapter = new ArrayAdapter<>(viewAssignments.this,android.R.layout.simple_list_item_1, assList);
                 listView.setAdapter(adapter);
 
             }
@@ -49,16 +47,9 @@ public class viewClass extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                SchoolClass indexClass = classList.get(position);
-                Log.d("mytag", indexClass.toString());
-                int indexClassId = indexClass.getClassId();
-
-                Intent intent = new Intent(getApplicationContext(), viewAssignments.class);
-                intent.putExtra("CLASS_ID", indexClassId);
-                intent.putExtra("USERNAME", username);
-                intent.putExtra("isAdmin", isAdmin);
-                intent.putExtra("USER_ID", userId);
-                startActivity(intent);
+                Assignments indexAss = assList.get(position);
+                Log.d("mytag", indexAss.toString());
+                int indexClassId = indexAss.getAssId();
             }
         });
 
@@ -73,5 +64,4 @@ public class viewClass extends AppCompatActivity {
             }
         });
     }
-
 }

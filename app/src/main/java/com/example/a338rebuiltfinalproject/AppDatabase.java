@@ -10,12 +10,14 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import java.util.concurrent.Executors;
 
-@Database(entities = {User.class, SchoolClass.class}, version = 3)
+@Database(entities = {User.class, SchoolClass.class, Assignments.class}, version = 4)
     public abstract class AppDatabase extends RoomDatabase {
 
         public abstract UserDAO userDao();
 
         public abstract SchoolClassDAO schoolclassDao();
+
+        public abstract AssignmentsDAO assignmentsDao();
         private static volatile AppDatabase instance;
 
         public static AppDatabase getDatabase(final Context context) {
@@ -49,6 +51,9 @@ import java.util.concurrent.Executors;
                         //predefined schoolClass
                         SchoolClass testClass = new SchoolClass("English", "A");
                         instance.schoolclassDao().insert(testClass);
+
+                        Assignments testAss = new Assignments("Term Paper", "December 3");
+                        instance.assignmentsDao().insert(testAss);
 
                     }
                 });
