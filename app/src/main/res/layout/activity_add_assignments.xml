@@ -79,7 +79,7 @@
         tools:ignore="Autofill" />
 
     <Button
-        android:id="@+id/add_class_button"
+        android:id="@+id/add_ass_button"
         android:layout_width="200dp"
         android:layout_height="75dp"
         android:text="@string/add_assignment"

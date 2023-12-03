@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 public class Assignments {
     @PrimaryKey(autoGenerate = true)
     private int mAssId;
-    private int mUserId;
+    private int mClassId;
     private String mAssName;
     private String mAssDue;
 
@@ -23,12 +23,12 @@ public class Assignments {
         mAssId = assId;
     }
 
-    public int getUserId() {
-        return mUserId;
+    public int getClassId() {
+        return mClassId;
     }
 
-    public void setUserId(int userId) {
-        mUserId = userId;
+    public void setClassId(int classId) {
+        mClassId = classId;
     }
 
     public String getAssName() {

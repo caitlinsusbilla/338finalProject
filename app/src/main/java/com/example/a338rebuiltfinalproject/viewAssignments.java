@@ -16,6 +16,7 @@ import java.util.List;
 
 public class viewAssignments extends AppCompatActivity {
     Button backButton;
+    Button addAssButton;
 
     private List<Assignments> assList = new ArrayList<>();;
     @Override
@@ -25,18 +26,20 @@ public class viewAssignments extends AppCompatActivity {
 
         ListView listView = findViewById(R.id.listAssignments);
         backButton = findViewById(R.id.assignBackButton);
+        addAssButton = findViewById(R.id.addAssignment);
 
         String username = getIntent().getStringExtra("USERNAME");
         boolean isAdmin = getIntent().getBooleanExtra("isAdmin", true);
         int userId = getIntent().getIntExtra("USER_ID",0);
+        int classId = getIntent().getIntExtra("CLASS_ID",0);
 
-        Log.d("mytag", String.valueOf(userId));
+        Log.d("mytag", String.valueOf(classId));
 
         // retrieve classes
         new Thread(new Runnable() {
             @Override
             public void run() {
-                assList = AppDatabase.getDatabase(viewAssignments.this).assignmentsDao().getAllAssForUser(userId);
+                assList = AppDatabase.getDatabase(viewAssignments.this).assignmentsDao().getAllAssForUser(classId);
                 ArrayAdapter adapter = new ArrayAdapter<>(viewAssignments.this,android.R.layout.simple_list_item_1, assList);
                 listView.setAdapter(adapter);
 
@@ -49,7 +52,7 @@ public class viewAssignments extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Assignments indexAss = assList.get(position);
                 Log.d("mytag", indexAss.toString());
-                int indexClassId = indexAss.getAssId();
+                int indexAssId = indexAss.getAssId();
             }
         });
 
@@ -60,6 +63,18 @@ public class viewAssignments extends AppCompatActivity {
                 intent.putExtra("USERNAME",username);
                 intent.putExtra("isAdmin",isAdmin);
                 intent.putExtra("USER_ID", userId);
+                startActivity(intent);
+            }
+        });
+
+        addAssButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), addAssignments.class);
+                intent.putExtra("USERNAME",username);
+                intent.putExtra("isAdmin",isAdmin);
+                intent.putExtra("USER_ID", userId);
+                intent.putExtra("CLASS_ID", classId);
                 startActivity(intent);
             }
         });

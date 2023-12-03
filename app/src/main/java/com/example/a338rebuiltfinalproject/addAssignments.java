@@ -22,15 +22,18 @@ public class addAssignments extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_class);
+        setContentView(R.layout.activity_add_assignments);
 
         binding = ActivityAddAssignmentsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        addAssignment = binding.addClassButton;
+        addAssignment = binding.addAssButton;
 
         String username = getIntent().getStringExtra("USERNAME");
         int userId = getIntent().getIntExtra("USER_ID",0);
+        int classId = getIntent().getIntExtra("CLASS_ID",0);
+
+        Log.d("class", String.valueOf(classId));
 
         addAssignment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +58,7 @@ public class addAssignments extends AppCompatActivity {
                         AssignmentsDAO assDao = database.assignmentsDao();
 
                         Assignments newAss = new Assignments(assName, addDate);
-                        newAss.setUserId(userId); //save it to the specific user
+                        newAss.setAssId(classId); //save it to the specific class
 
                         assDao.insert(newAss);
                         Log.d("mytab", newAss.getAssName());
@@ -71,6 +74,7 @@ public class addAssignments extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), viewClass.class); // send to landing page
                 intent.putExtra("USERNAME", username);
                 intent.putExtra("USER_ID", userId);
+                intent.putExtra("CLASS_ID", classId);
                 boolean isAdmin = getIntent().getBooleanExtra("isAdmin", true);
                 intent.putExtra("isAdmin", isAdmin); //pass to LandingPage
                 startActivity(intent);

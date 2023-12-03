@@ -25,8 +25,8 @@ public interface AssignmentsDAO {
         @Query("SELECT * FROM ASSIGNMENTS WHERE mAssId = :assId")
         List<Assignments> getAssById(int assId);
 
-        @Query("SELECT * FROM ASSIGNMENTS WHERE mUserId = :userId")
-        List<Assignments> getAllAssForUser(int userId);
+        @Query("SELECT * FROM ASSIGNMENTS WHERE mClassId = :mClassId")
+        List<Assignments> getAllAssForUser(int mClassId);
 
 
 }

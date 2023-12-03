@@ -52,7 +52,7 @@ public class viewClass extends AppCompatActivity {
                 SchoolClass indexClass = classList.get(position);
                 Log.d("mytag", indexClass.toString());
                 int indexClassId = indexClass.getClassId();
-
+                Log.d("viewClass", String.valueOf(indexClassId));
                 Intent intent = new Intent(getApplicationContext(), viewAssignments.class);
                 intent.putExtra("CLASS_ID", indexClassId);
                 intent.putExtra("USERNAME", username);
