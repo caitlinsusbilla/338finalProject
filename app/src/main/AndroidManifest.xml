@@ -13,6 +13,9 @@
         android:theme="@style/Theme._338RebuiltFinalProject"
         tools:targetApi="31">
         <activity
+            android:name=".addAssignments"
+            android:exported="false" />
+        <activity
             android:name=".viewAssignments"
             android:exported="false" />
         <activity

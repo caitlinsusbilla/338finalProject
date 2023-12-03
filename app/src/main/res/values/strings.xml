@@ -43,4 +43,11 @@
     <string name="updated_class_name">Updated Class Name</string>
     <string name="update_class">Update Class</string>
     <string name="your_assignments">Your Assignments</string>
+    <string name="add_an_assignment">Add an Assignment</string>
+    <string name="add_an_assignments">Add an Assignment</string>
+    <string name="assignment">Assignment</string>
+    <string name="due_date">Due Date</string>
+    <string name="enter_assignment_name">Enter Assignment Name</string>
+    <string name="enter_due_date">Enter Due Date</string>
+    <string name="add_assignment">Add Assignment</string>
 </resources>

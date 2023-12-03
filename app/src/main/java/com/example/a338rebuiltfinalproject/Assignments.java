@@ -46,4 +46,9 @@ public class Assignments {
     public void setAssDue(String assDue) {
         mAssDue = assDue;
     }
+
+    @Override
+    public String toString() {
+        return getAssName() + " | Due Date: " + getAssDue();
+    }
 }
