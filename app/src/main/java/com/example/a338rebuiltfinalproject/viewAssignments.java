@@ -53,6 +53,13 @@ public class viewAssignments extends AppCompatActivity {
                 Assignments indexAss = assList.get(position);
                 Log.d("mytag", indexAss.toString());
                 int indexAssId = indexAss.getAssId();
+
+                Intent intent = new Intent(getApplicationContext(), editAssignments.class);
+                intent.putExtra("USERNAME",username);
+                intent.putExtra("isAdmin",isAdmin);
+                intent.putExtra("USER_ID", userId);
+                intent.putExtra("CLASS_ID", classId);
+                startActivity(intent);
             }
         });
 

@@ -81,8 +81,6 @@ public class updateClass extends AppCompatActivity {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                // Implement the logic to retrieve the list of classes from the database
-                // (e.g., use Room Database or any other database framework)
                 AppDatabase database = AppDatabase.getDatabase(getApplicationContext());
                 SchoolClassDAO classDao = database.schoolclassDao();
                 result[0] = classDao.getAllClassesForUser(userId);

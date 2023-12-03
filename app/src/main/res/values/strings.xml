@@ -50,4 +50,8 @@
     <string name="enter_assignment_name">Enter Assignment Name</string>
     <string name="enter_due_date">Enter Due Date</string>
     <string name="add_assignment">Add Assignment</string>
+    <string name="update_an_assignment">Update an Assignment</string>
+    <string name="updated_assignment_name">Updated Assignment Name</string>
+    <string name="updated_due_date">Updated Due Date</string>
+    <string name="update_assignment">Update Assignment</string>
 </resources>

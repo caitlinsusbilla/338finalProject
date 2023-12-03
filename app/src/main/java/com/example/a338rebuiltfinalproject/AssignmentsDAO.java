@@ -15,7 +15,7 @@ public interface AssignmentsDAO {
         @Delete
         void delete(Assignments assignments);
         @Update
-        void updateClass(SchoolClass schoolClass);
+        void updateAss(Assignments asignments);
         @Query("SELECT * FROM ASSIGNMENTS WHERE mAssName = :assName AND mAssDue = :assDue")
         Assignments getClass(String assName, String assDue);
 
