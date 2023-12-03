@@ -45,12 +45,6 @@ public class addAssignments extends AppCompatActivity {
                 String assName = addAssNameInput.getText().toString();
                 String addDate = addDateInput.getText().toString();
 
-                SharedPreferences.Editor editor = getSharedPreferences("myapp", MODE_PRIVATE).edit();
-
-                editor.putString("addedAss", assName);
-                editor.putString("addedDate", addDate);
-                editor.apply();
-
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -58,7 +52,7 @@ public class addAssignments extends AppCompatActivity {
                         AssignmentsDAO assDao = database.assignmentsDao();
 
                         Assignments newAss = new Assignments(assName, addDate);
-                        newAss.setAssId(classId); //save it to the specific class
+                        newAss.setClassId(classId); //save it to the specific class
 
                         assDao.insert(newAss);
                         Log.d("mytab", newAss.getAssName());

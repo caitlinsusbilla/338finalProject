@@ -75,6 +75,7 @@ public class viewAssignments extends AppCompatActivity {
                 intent.putExtra("isAdmin",isAdmin);
                 intent.putExtra("USER_ID", userId);
                 intent.putExtra("CLASS_ID", classId);
+                Log.d("addButton", String.valueOf(classId));
                 startActivity(intent);
             }
         });
